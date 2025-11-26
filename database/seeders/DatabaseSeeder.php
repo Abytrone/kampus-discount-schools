@@ -11,28 +11,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // First, create roles
         $this->call([
             RoleSeeder::class,
-        ]);
-
-        // Then, generate permissions for all Filament resources
-        $this->call([
             PermissionSeeder::class,
-        ]);
-
-        // Assign permissions to roles
-        $this->call([
             RolePermissionSeeder::class,
-        ]);
-
-        // Seed application data
-        $this->call([
             SchoolSeeder::class,
             UserSeeder::class,
-            StudentSeeder::class,
-            GuardianSeeder::class,
-            VerificationSeeder::class,
         ]);
+
+        if(app()->isLocal()){
+            $this->call([
+                StudentSeeder::class,
+                GuardianSeeder::class,
+                VerificationSeeder::class,
+            ]);
+        }
     }
 }
