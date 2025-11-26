@@ -649,13 +649,8 @@ class SchoolResource extends Resource
                                     ->size('lg'),
 
                                 Infolists\Components\TextEntry::make('programmes')
+                                    ->default('No programmes listed')
                                     ->label('Programmes Offered')
-                                    ->formatStateUsing(function ($record) {
-                                        if (empty($record->programmes) || !is_array($record->programmes)) {
-                                            return 'No programmes listed';
-                                        }
-                                        return collect($record->programmes)->map(fn ($p) => trim($p))->filter()->values();
-                                    })
                                     ->badge()
                                     ->color('info')
                                     ->icon('heroicon-o-book-open')
