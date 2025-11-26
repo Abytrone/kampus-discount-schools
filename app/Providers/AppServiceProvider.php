@@ -22,11 +22,11 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-         if (app()->environment('production')) {
-            URL::forceScheme('https');
-         }else{
-            URL::forceScheme('http');
-         }
+//         if (app()->environment('production')) {
+//            URL::forceScheme('https');
+//         }else{
+//            URL::forceScheme('http');
+//         }
 
         FilamentColor::register([
             'danger' => Color::Red,
